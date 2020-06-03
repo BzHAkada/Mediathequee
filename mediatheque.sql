@@ -204,7 +204,7 @@ CREATE TABLE IF NOT EXISTS `langue` (
 --
 
 INSERT INTO `langue` (`Id_Langue`, `Nom_Langue`) VALUES
-(1, 'frenchy'),
+(1, 'Français'),
 (2, 'bilingue');
 
 -- --------------------------------------------------------
