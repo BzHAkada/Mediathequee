@@ -5,6 +5,10 @@
  */
 package BDD;
 
+/**
+ *
+ * @author BtsSio9
+ */
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -13,11 +17,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-/**
- *
- * @author BTS sio
- */
+ 
 public class CTableTests {
 
     protected CBDD bdd;
@@ -165,7 +165,7 @@ public class CTableTests {
         }
         return res;
     }
-
+    
     public int supprimerTest(int id) {
         int res = -1;
         if (bdd.connecter() == true) {
@@ -218,5 +218,4 @@ public class CTableTests {
         }
 
     }
-
 }

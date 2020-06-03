@@ -28,14 +28,14 @@ public class CModifie {
         //setChronoTagModifie(chronoTagModifie);
     //}
     
-    public CModifie(int id_Visiteur, int id_Livre) {
-        setIdVisiteur(id_Visiteur);
-        setIdLivre(id_Livre);
+    public CModifie(int idVisiteur, int idLivre) {
+        setIdVisiteur(idVisiteur);
+        setIdLivre(idLivre);
     }
 
-    public CModifie(int id_Visiteur, int id_Livre, LocalDateTime chronoTagModifie) {
-        setIdVisiteur(id_Visiteur);
-        setIdLivre(id_Livre);
+    public CModifie(int idVisiteur, int idLivre, LocalDateTime chronoTagModifie) {
+        setIdVisiteur(idVisiteur);
+        setIdLivre(idLivre);
         setChronoTagModifie(chronoTagModifie);
     }
 

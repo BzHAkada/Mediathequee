@@ -50,8 +50,8 @@ public class CTableEditeur {
         String req = "INSERT INTO `editeur`(`Id_Editeur`,"
                 + " `Nom_Editeur`)"
                 + "  VALUES ('"
-                +editeur.getId_Editeur()+"', '"
-                +editeur.getNom_Editeur()+"');";
+                +editeur.getIdEditeur()+"', '"
+                +editeur.getNomEditeur()+"');";
         int res = -1;
         if (bdd.connecter() == true) {//Execution de la Rqt
             res = bdd.executerRequeteUpdate(req);
@@ -81,8 +81,8 @@ public class CTableEditeur {
     public int modifierEditeur(CEditeur editeur){
       //Rqt a executer
     String req = "UPDATE `editeur` SET Nom_Editeur ='"
-                + editeur.getNom_Editeur()
-                + "' WHERE Id_Editeur = '"+editeur.getId_Editeur()+"';";
+                + editeur.getNomEditeur()
+                + "' WHERE Id_Editeur = '"+editeur.getIdEditeur()+"';";
     
         int res = -1;
         if (bdd.connecter() == true) {//Execution de la rqt
@@ -95,12 +95,12 @@ public class CTableEditeur {
         return res;
     }   
     
-    CEditeur convertir_RS_Editeur(ResultSet rs) {//Converti les données SQL en java
+    CEditeur convertirRSEditeur(ResultSet rs) {//Converti les données SQL en java
         try {
-            int id_Editeur = rs.getInt("Id_Editeur");
-            String nom_Editeur = rs.getString("Nom_Editeur");
+            int idEditeur = rs.getInt("Id_Editeur");
+            String nomEditeur = rs.getString("Nom_Editeur");
           
-            return new CEditeur(id_Editeur, nom_Editeur);
+            return new CEditeur(idEditeur, nomEditeur);
         } catch (SQLException ex) {
             Logger.getLogger(CTableEditeur.class.getName()).log(Level.SEVERE, null, ex);
             return null;
@@ -113,7 +113,7 @@ public class CTableEditeur {
             ResultSet rs = bdd.executerRequeteQuery("SELECT * FROM `mediatheque`.`editeur`");
             try {
                 while (rs.next()) {//Ajout des données a une liste
-                    CEditeur editeur = convertir_RS_Editeur(rs);
+                    CEditeur editeur = convertirRSEditeur(rs);
                     listeEditeurs.add(editeur);
                 }
                 if(listeEditeurs.isEmpty()){//Si bbd vide renvoi un msg d'erreur
@@ -135,7 +135,7 @@ public class CTableEditeur {
             ResultSet rs = bdd.executerRequeteQuery("SELECT * FROM `mediatheque`.`editeur` WHERE `Id_Editeur` = '"+id+"';");
             try {
                 while (rs.next()) {//Ajout des données a la liste
-                    CEditeur auteur = convertir_RS_Editeur(rs);
+                    CEditeur auteur = convertirRSEditeur(rs);
                     listeEditeurs.add(auteur);
                 }
                 if(listeEditeurs.isEmpty()){//Si données introuvables renvoi un msg d'erreur
@@ -153,7 +153,7 @@ public class CTableEditeur {
      
     public void printEditeur(ArrayList<CEditeur> liste){//Permet d'afficher les lectures de la BDD
          liste.forEach((editeur)->{
-             System.out.println("Nom de l'editeur : " + editeur.getNom_Editeur()); 
+             System.out.println("Nom de l'editeur : " + editeur.getNomEditeur()); 
          });
      }
     
@@ -162,11 +162,11 @@ public class CTableEditeur {
     public static void main(String[] args) {
         CTableEditeur tableEditeur = new CTableEditeur();
         CEditeur editeur = new CEditeur(1, "Hachette");
-        //tableEditeur.insererEditeur(editeur);
+        tableEditeur.insererEditeur(editeur);
         //tableEditeur.supprimerEditeur("1");
         //tableEditeur.modifierEditeur(editeur);
         //tableEditeur.printEditeur(tableEditeur.lireEditeur());
-        tableEditeur.printEditeur(tableEditeur.lireUnEditeur(1));
+        //tableEditeur.printEditeur(tableEditeur.lireUnEditeur(1));
         
     }
 }

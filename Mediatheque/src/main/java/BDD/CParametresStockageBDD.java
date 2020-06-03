@@ -12,9 +12,9 @@ import java.util.Properties;
 
 /**
  *
- * @author BTS sio
+ * @author Sabrina Cos
  */
-public class CParametresStockageBDD {
+public final class CParametresStockageBDD {
 
     protected String ip;
     protected int port;

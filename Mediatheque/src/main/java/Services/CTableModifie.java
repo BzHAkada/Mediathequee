@@ -100,10 +100,10 @@ public class CTableModifie {
 
     CModifie convertirRsModifie(ResultSet rs) {
         try {
-            int id_Visiteur = rs.getInt("Id_Visiteur");
-            int id_Livre = rs.getInt("Id_Livre");
+            int idVisiteur = rs.getInt("Id_Visiteur");
+            int idLivre = rs.getInt("Id_Livre");
             LocalDateTime dateFromDatabase = rs.getTimestamp("Chrono_Tag_Modification_Modifie").toLocalDateTime();
-            return new CModifie(id_Visiteur, id_Livre, dateFromDatabase);
+            return new CModifie(idVisiteur, idLivre, dateFromDatabase);
         } catch (SQLException ex) {
             Logger.getLogger(CModifie.class.getName()).log(Level.SEVERE, null, ex);
             return null;

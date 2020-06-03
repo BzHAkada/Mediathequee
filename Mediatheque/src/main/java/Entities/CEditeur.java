@@ -12,36 +12,36 @@ package Entities;
 public class CEditeur {
 
     protected int idEditeur;
-    protected String Nom_Editeur;
+    protected String NomEditeur;
 
-    public CEditeur(int Id_Editeur, String Nom_Editeur) {
-        setId_Editeur(Id_Editeur);
-        setNom_Editeur(Nom_Editeur);
+    public CEditeur(int IdEditeur, String NomEditeur) {
+        setIdEditeur(IdEditeur);
+        setNomEditeur(NomEditeur);
     }
     
-    public CEditeur(int id_Editeur) {
-        setId_Editeur(id_Editeur);
+    public CEditeur(int idEditeur) {
+        setIdEditeur(idEditeur);
     }
     
 
-    public CEditeur(String Nom_Editeur) {
-        setNom_Editeur(Nom_Editeur);
+    public CEditeur(String NomEditeur) {
+        setNomEditeur(NomEditeur);
     }
 
-    public int getId_Editeur() {
+    public int getIdEditeur() {
         return idEditeur;
     }
 
-    public final void setId_Editeur(int Id_Editeur) {
-        this.idEditeur = Id_Editeur;
+    public final void setIdEditeur(int IdEditeur) {
+        this.idEditeur = IdEditeur;
     }
 
-    public String getNom_Editeur() {
-        return Nom_Editeur;
+    public String getNomEditeur() {
+        return NomEditeur;
     }
 
-    public final void setNom_Editeur(String Nom_Editeur) {
-        this.Nom_Editeur = Nom_Editeur;
+    public final void setNomEditeur(String NomEditeur) {
+        this.NomEditeur = NomEditeur;
     }
 
 }

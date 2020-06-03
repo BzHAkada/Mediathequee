@@ -7,7 +7,7 @@ package Entities;
 
 /**
  *
- * @author BTS sio
+ * @author BtsSio9
  */
 public class CAuteur {
     protected int idAuteur;

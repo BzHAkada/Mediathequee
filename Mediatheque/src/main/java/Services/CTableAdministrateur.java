@@ -20,18 +20,18 @@ import java.util.logging.Logger;
  */
 public class CTableAdministrateur {
     //Ajout des objets
-    //protected ArrayList<CAdministrateur> listadmin;
+    protected ArrayList<CAdministrateur> listadmin;
     protected CBDD bdd;
     
     //Getter et setter CTableAdmin
 
-    /*public ArrayList<CAdministrateur> getListadmin() {
+    public ArrayList<CAdministrateur> getListadmin() {
         return listadmin;
     }
 
     public void setListadmin(ArrayList<CAdministrateur> listadmin) {
         this.listadmin = listadmin;
-    }*/
+    }
 
     public CBDD getBdd() {
         return bdd;
@@ -51,9 +51,9 @@ public class CTableAdministrateur {
                 + " `Identifiant_Admin`, `Mot_De_Passe_Admin`,"
                 + "`Nom_Admin`, `Prenom_Admin`)"
                 + "  VALUES ('"
-                +admin.getId_Admin()+"', '"
-                +admin.getIdentifiant_Admin()+"',"
-                + " '"+admin.getMdp_Admin()+"', '"+admin.getNom_Admin()+"', '"+admin.getPrenom_Admin()+"');";
+                +admin.getIdAdmin()+"', '"
+                +admin.getIdentifiantAdmin()+"',"
+                + " '"+admin.getMdpAdmin()+"', '"+admin.getNomAdmin()+"', '"+admin.getPrenomAdmin()+"');";
         int res = -1;
         if (bdd.connecter() == true) {//Execution de la Rqt
             res = bdd.executerRequeteUpdate(req);
@@ -83,14 +83,14 @@ public class CTableAdministrateur {
     public int modifierAdministrateur(CAdministrateur admin){
       //Rqt a executer
     String req = "UPDATE `administrateur` SET Identifiant_Admin ='"
-                + admin.getIdentifiant_Admin()
+                + admin.getIdentifiantAdmin()
                 + "' , Mot_De_Passe_Admin = '"
-                + admin.getMdp_Admin()
+                + admin.getMdpAdmin()
                 + "' , Nom_Admin = '"
-                + admin.getNom_Admin()
+                + admin.getNomAdmin()
                 + "' , Prenom_Admin = '"
-                + admin.getPrenom_Admin()
-                + "' WHERE Id_Admin = '"+admin.getId_Admin()+"';";
+                + admin.getPrenomAdmin()
+                + "' WHERE Id_Admin = '"+admin.getIdAdmin()+"';";
     
         int res = -1;
         if (bdd.connecter() == true) {//Execution de la rqt
@@ -103,15 +103,15 @@ public class CTableAdministrateur {
         return res;
     }   
     
-    CAdministrateur convertir_RS_Administrateur(ResultSet rs) {//Converti les données SQL en java
+    CAdministrateur convertirRSAdministrateur(ResultSet rs) {//Converti les données SQL en java
         try {
-            int id_Admin = rs.getInt("Id_Admin");
-            String identifiant_Admin = rs.getString("Identifiant_Admin");
-            String mdp_Admin = rs.getString("Mot_De_Passe_Admin");
-            String nom_Admin = rs.getString("Nom_Admin");
-            String prenom_Admin = rs.getString("Prenom_Admin");
+            int idAdmin = rs.getInt("Id_Admin");
+            String identifiantAdmin = rs.getString("Identifiant_Admin");
+            String mdpAdmin = rs.getString("Mot_De_Passe_Admin");
+            String nomAdmin = rs.getString("Nom_Admin");
+            String prenomAdmin = rs.getString("Prenom_Admin");
             
-            return new CAdministrateur(id_Admin, identifiant_Admin, mdp_Admin, nom_Admin, prenom_Admin);
+            return new CAdministrateur(idAdmin, identifiantAdmin, mdpAdmin, nomAdmin, prenomAdmin);
         } catch (SQLException ex) {
             Logger.getLogger(CTableAdministrateur.class.getName()).log(Level.SEVERE, null, ex);
             return null;
@@ -124,7 +124,7 @@ public class CTableAdministrateur {
             ResultSet rs = bdd.executerRequeteQuery("SELECT * FROM `mediatheque`.`administrateur`");
             try {
                 while (rs.next()) {//Ajout des données a une liste
-                    CAdministrateur admin = convertir_RS_Administrateur(rs);
+                    CAdministrateur admin = convertirRSAdministrateur(rs);
                     listeDeAdmins.add(admin);
                 }
                 if(listeDeAdmins.isEmpty()){//Si bbd vide renvoi un msg d'erreur
@@ -146,11 +146,11 @@ public class CTableAdministrateur {
             ResultSet rs = bdd.executerRequeteQuery("SELECT * FROM `mediatheque`.`administrateur` WHERE `Id_Admin` = '"+id+"';");
             try {
                 while (rs.next()) {//Ajout des données a la liste
-                    CAdministrateur admin = convertir_RS_Administrateur(rs);
+                    CAdministrateur admin = convertirRSAdministrateur(rs);
                     listeDeAdmins.add(admin);
                 }
                 if(listeDeAdmins.isEmpty()){//Si données introuvables renvoi un msg d'erreur
-                    System.out.println("404 un admin not found");
+                    System.out.println("404 visiteur not found");
                 }
             } catch (SQLException ex) {
             }
@@ -164,7 +164,7 @@ public class CTableAdministrateur {
      
     public void printAdministrateur(ArrayList<CAdministrateur> liste){//Permet d'afficher les lectures de la BDD
          liste.forEach((admin)->{
-             System.out.println("Nom de l'administrateur : " + admin.getNom_Admin()); 
+             System.out.println("Nom de l'administrateur : " + admin.getNomAdmin()); 
          });
      }
     

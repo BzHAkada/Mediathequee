@@ -10,13 +10,12 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  *
- * @author BTS sio
+ * @author Sabrina Cos
  */
 public class CBDD {
 
@@ -68,7 +67,7 @@ public class CBDD {
         }
     }
 
-   public static boolean testerConnexion(String nomFichierProperties) {
+    public static boolean testerConnexion(String nomFichierProperties) {
         CBDD bdd = new CBDD(new CParametresStockageBDD(nomFichierProperties));
         if (bdd.connecter() == true) {
 
@@ -89,22 +88,11 @@ public class CBDD {
             return null;
         }
     }
-    
-    public ResultSet PreparedexecuterRequeteQuery(String requete, ArrayList parametre) {
-        try {
-            stmt = conn.prepareStatement(requete);
-            return stmt.executeQuery(requete);
-        } catch (SQLException ex) {
-            Logger.getLogger(CBDD.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
-    }
 
-    public static String pretraiterChaineSQL(String s)
-    {
+    public static String pretraiterChaineSQL(String s) {
         return s.trim().replace("'", "''");
     }
-    
+
     public static void main(String[] args) {
 
         // Programme de test de connexion/déconnexion à la BDD
@@ -122,4 +110,3 @@ public class CBDD {
     }
 
 }
-

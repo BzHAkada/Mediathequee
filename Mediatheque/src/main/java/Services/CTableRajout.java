@@ -48,7 +48,7 @@ public class CTableRajout {
         DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String req = "INSERT INTO `rajoute`(`Id_Admin`, `Id_Livre`, `Chrono_Tag_Rajout`)"
                 + "VALUES ('"
-                + rajout.getAdmin().getId_Admin() + "', '"
+                + rajout.getAdmin().getIdAdmin() + "', '"
                 + rajout.getLivre().getIdLivre() + "', '"
                 + timeFormat.format(localDate) + "');";
         int res = -1;
@@ -111,10 +111,10 @@ public class CTableRajout {
 
     CRajout convertirRsRajout(ResultSet rs) {
         try {
-            int id_Admin = rs.getInt("Id_Admin");
-            int id_Livre = rs.getInt("Id_Livre");
+            int idAdmin = rs.getInt("Id_Admin");
+            int idLivre = rs.getInt("Id_Livre");
             LocalDateTime dateFromDatabase = rs.getTimestamp("Chrono_Tag_Rajout").toLocalDateTime();
-            return new CRajout(id_Admin, id_Livre, dateFromDatabase);
+            return new CRajout(idAdmin, idLivre, dateFromDatabase);
         } catch (SQLException ex) {
             Logger.getLogger(CModifie.class.getName()).log(Level.SEVERE, null, ex);
             return null;

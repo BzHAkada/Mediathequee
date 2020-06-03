@@ -49,8 +49,8 @@ public class CTableLangue {
         //Req a executer
         String req = "INSERT INTO `langue`(`Id_Langue`, `Nom_Langue`)"
                 + "  VALUES ('"
-                +langue.getId_Langue()+"', '"
-                +langue.getNom_Langue()+"');";
+                +langue.getIdLangue()+"', '"
+                +langue.getNomLangue()+"');";
         int res = -1;
         if (bdd.connecter() == true) {//Execution de la Rqt
             res = bdd.executerRequeteUpdate(req);
@@ -80,8 +80,8 @@ public class CTableLangue {
     public int modifierLangue(CLangue langue){
       //Rqt a executer
     String req = "UPDATE `langue` SET Nom_Langue ='"
-                + langue.getNom_Langue()
-                + "' , Nom_Langue = '"+"';";
+                + langue.getNomLangue()
+                + "' WHERE Id_Langue = '" + langue.getIdLangue()+"';";
     
         int res = -1;
         if (bdd.connecter() == true) {//Execution de la rqt
@@ -94,11 +94,11 @@ public class CTableLangue {
         return res;
     }   
     
-    CLangue convertir_RS_Langue(ResultSet rs) {//Converti les données SQL en java
+    CLangue convertirRSLangue(ResultSet rs) {//Converti les données SQL en java
         try {
-            int id_Langue = rs.getInt("Id_Langue");
-            String Nom_Langue = rs.getString("Nom_Langue");          
-            return new CLangue(id_Langue,Nom_Langue);
+            int idLangue = rs.getInt("Id_Langue");
+            String NomLangue = rs.getString("Nom_Langue");          
+            return new CLangue(idLangue,NomLangue);
         } catch (SQLException ex) {
             Logger.getLogger(CTableLangue.class.getName()).log(Level.SEVERE, null, ex);
             return null;
@@ -111,7 +111,7 @@ public class CTableLangue {
             ResultSet rs = bdd.executerRequeteQuery("SELECT * FROM `mediatheque`.`langue`");
             try {
                 while (rs.next()) {//Ajout des données a une liste
-                    CLangue langue = convertir_RS_Langue(rs);
+                    CLangue langue = convertirRSLangue(rs);
                     listeLangues.add(langue);
                 }
                 if(listeLangues.isEmpty()){//Si bbd vide renvoi un msg d'erreur
@@ -133,7 +133,7 @@ public class CTableLangue {
             ResultSet rs = bdd.executerRequeteQuery("SELECT * FROM `mediatheque`.`langue` WHERE `Id_Langue` = '"+id+"';");
             try {
                 while (rs.next()) {//Ajout des données a la liste
-                    CLangue langue = convertir_RS_Langue(rs);
+                    CLangue langue = convertirRSLangue(rs);
                     listeLangues.add(langue);
                 }
                 if(listeLangues.isEmpty()){//Si données introuvables renvoi un msg d'erreur
@@ -151,7 +151,7 @@ public class CTableLangue {
      
     public void printLangue(ArrayList<CLangue> liste){//Permet d'afficher les lectures de la BDD
          liste.forEach((langue)->{
-             System.out.println("Nom de la langue : " + langue.getNom_Langue()); 
+             System.out.println("Nom de la langue : " + langue.getNomLangue()); 
          });
      }
     
@@ -159,12 +159,12 @@ public class CTableLangue {
     //test methode
     public static void main(String[] args) {
         CTableLangue tableLangue = new CTableLangue();
-        CLangue langue = new CLangue(1, "frenchy");
-        //tableLangue.insererLangue(langue);
-        //tableLangue.supprimerLangue("1");
+        CLangue langue = new CLangue(3, "test01");
+       //tableLangue.insererLangue(langue);
+        tableLangue.supprimerLangue("3");
         //tableLangue.modifierLangue(langue);
         //tableLangue.printLangue(tableLangue.lireLangue());
-        tableLangue.printLangue(tableLangue.lireUneLangue(1));
+        //tableLangue.printLangue(tableLangue.lireUneLangue(1));
         
     }
 }

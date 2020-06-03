@@ -47,7 +47,7 @@ public class CTableEdition {
         LocalDateTime localDate = LocalDateTime.now();
         String req = "INSERT INTO `edite`(`Id_Admin`, `Id_Livre`, `Chrono_Tag_Edite`)"
                 + "VALUES ('"
-                + edition.getAdmin().getId_Admin() + "', '"
+                + edition.getAdmin().getIdAdmin() + "', '"
                 + edition.getLivre().getIdLivre() + "', '"
                 + formateLocalDateTime(localDate) + "');";
         int res = -1;
@@ -109,10 +109,10 @@ public class CTableEdition {
 
     CEdition convertirRsRajout(ResultSet rs) {
         try {
-            int id_Admin = rs.getInt("Id_Admin");
-            int id_Livre = rs.getInt("Id_Livre");
+            int idAdmin = rs.getInt("Id_Admin");
+            int idLivre = rs.getInt("Id_Livre");
             LocalDateTime dateFromDatabase = rs.getTimestamp("Chrono_Tag_Edite").toLocalDateTime();
-            return new CEdition(id_Admin, id_Livre, dateFromDatabase);
+            return new CEdition(idAdmin, idLivre, dateFromDatabase);
         } catch (SQLException ex) {
             Logger.getLogger(CModifie.class.getName()).log(Level.SEVERE, null, ex);
             return null;

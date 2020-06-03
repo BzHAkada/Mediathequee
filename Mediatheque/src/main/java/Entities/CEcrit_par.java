@@ -7,7 +7,7 @@ package Entities;
 
 /**
  *
- * @author BTS sio
+ * @author BtsSio9
  */
 public class CEcrit_par {
     protected CEditeur editeur;

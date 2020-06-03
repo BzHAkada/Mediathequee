@@ -110,10 +110,10 @@ public class CTableTelecharge {
 
     CTelecharge convertirRsRajout(ResultSet rs) {
         try {
-            int id_Visiteur = rs.getInt("Id_Visiteur");
-            int id_Livre = rs.getInt("Id_Livre");
+            int idVisiteur = rs.getInt("Id_Visiteur");
+            int idLivre = rs.getInt("Id_Livre");
             LocalDateTime dateFromDatabase = rs.getTimestamp("Chrono_Tag_Telecharge").toLocalDateTime();
-            return new CTelecharge(id_Visiteur, id_Livre, dateFromDatabase);
+            return new CTelecharge(idVisiteur, idLivre, dateFromDatabase);
         } catch (SQLException ex) {
             Logger.getLogger(CModifie.class.getName()).log(Level.SEVERE, null, ex);
             return null;

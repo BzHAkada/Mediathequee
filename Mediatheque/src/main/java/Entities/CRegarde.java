@@ -16,10 +16,10 @@ public class CRegarde {
     
     //constructeur
     
-    public CRegarde(CAdministrateur admin, CLivre livre, LocalDateTime chrono_Tag_Regarde){
+    public CRegarde(CAdministrateur admin, CLivre livre, LocalDateTime chronoTagRegarde){
     setAdmin(admin);
     setLivre(livre);
-    setChronoTagRegarde(chrono_Tag_Regarde);
+    setChronoTagRegarde(chronoTagRegarde);
     }
     
     public CRegarde(CAdministrateur admin, CLivre livre) {

@@ -98,13 +98,13 @@ public class CTableAuteur {
         return res;
     }   
     
-    CAuteur convertir_RS_Auteur(ResultSet rs) {//Converti les données SQL en java
+    CAuteur convertirRSAuteur(ResultSet rs) {//Converti les données SQL en java
         try {
-            int id_Auteur = rs.getInt("Id_Auteur");
-            String nom_Auteur = rs.getString("Nom_Auteur");
-            String prenom_Auteur = rs.getString("Prenom_Auteur");
+            int idAuteur = rs.getInt("Id_Auteur");
+            String nomAuteur = rs.getString("Nom_Auteur");
+            String prenomAuteur = rs.getString("Prenom_Auteur");
           
-            return new CAuteur(id_Auteur, nom_Auteur, prenom_Auteur);
+            return new CAuteur(idAuteur, nomAuteur, prenomAuteur);
         } catch (SQLException ex) {
             Logger.getLogger(CTableAuteur.class.getName()).log(Level.SEVERE, null, ex);
             return null;
@@ -117,7 +117,7 @@ public class CTableAuteur {
             ResultSet rs = bdd.executerRequeteQuery("SELECT * FROM `mediatheque`.`auteur`");
             try {
                 while (rs.next()) {//Ajout des données a une liste
-                    CAuteur auteur = convertir_RS_Auteur(rs);
+                    CAuteur auteur = convertirRSAuteur(rs);
                     listeAuteurs.add(auteur);
                 }
                 if(listeAuteurs.isEmpty()){//Si bbd vide renvoi un msg d'erreur
@@ -139,7 +139,7 @@ public class CTableAuteur {
             ResultSet rs = bdd.executerRequeteQuery("SELECT * FROM `mediatheque`.`auteur` WHERE `Id_Auteur` = '"+id+"';");
             try {
                 while (rs.next()) {//Ajout des données a la liste
-                    CAuteur auteur = convertir_RS_Auteur(rs);
+                    CAuteur auteur = convertirRSAuteur(rs);
                     listeAuteurs.add(auteur);
                 }
                 if(listeAuteurs.isEmpty()){//Si données introuvables renvoi un msg d'erreur

@@ -2,6 +2,7 @@
 package Entities;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 
@@ -28,7 +29,8 @@ public class CVisiteur {
         setIdVisiteur(idVisiteur);
     }
 
-    public CVisiteur(int idVisiteur, String nomVisiteur, String prenomVisiteur, LocalDate dateNaissanceVisiteur, String emailVisiteur, String mdpVisiteur, String adresseVisiteur, int codePostalVisiteur, String villeVisiteur) {
+    public CVisiteur(int idVisiteur, String nomVisiteur, String prenomVisiteur, LocalDate dateNaissanceVisiteur, 
+            String emailVisiteur, String mdpVisiteur, String adresseVisiteur, int codePostalVisiteur, String villeVisiteur) {
         this.idVisiteur = idVisiteur;
         this.nomVisiteur = nomVisiteur;
         this.prenomVisiteur = prenomVisiteur;
@@ -39,7 +41,6 @@ public class CVisiteur {
         this.codePostalVisiteur = codePostalVisiteur;
         this.villeVisiteur = villeVisiteur;
     }
-
   
     
     //getter et setter CVisiteur

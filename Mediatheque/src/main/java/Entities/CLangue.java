@@ -7,40 +7,43 @@ package Entities;
 
 /**
  *
- * @author BTS sio
+ * @author BtsSio9
  */
 public class CLangue {
+    
+    protected int idLangue;
+    protected String nomLangue;
 
-    protected int id_Langue;
-    protected String nom_Langue;
-
-    public CLangue(int Id_Langue, String Nom_Langue) {
-        setId_Langue(Id_Langue);
-        setNom_Langue(Nom_Langue);
+    //Constructeur
+    
+    public CLangue(int idLangue, String nomLangue) {
+        setIdLangue(idLangue);
+        setNomLangue(nomLangue);
     }
     
-    public CLangue(int Id_Langue) {
-        setId_Langue(Id_Langue);
+    public CLangue(String nomLangue) {
+        setNomLangue(nomLangue);
     }
     
-    public CLangue(String Nom_Langue) {
-        setNom_Langue(Nom_Langue);
+    public CLangue(int idLangue){
+        setIdLangue(idLangue);
     }
 
-    public int getId_Langue() {
-        return id_Langue;
+    //Getter et Setter
+    
+    public int getIdLangue() {
+        return idLangue;
     }
 
-    public final void setId_Langue(int Id_Langue) {
-        this.id_Langue = Id_Langue;
+    public final void setIdLangue(int idLangue) {
+        this.idLangue = idLangue;
     }
 
-    public String getNom_Langue() {
-        return nom_Langue;
+    public String getNomLangue() {
+        return nomLangue;
     }
 
-    public final void setNom_Langue(String Nom_Langue) {
-        this.nom_Langue = Nom_Langue;
+    public final void setNomLangue(String nomLangue) {
+        this.nomLangue = nomLangue;
     }
-
 }

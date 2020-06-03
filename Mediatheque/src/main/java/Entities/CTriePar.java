@@ -9,16 +9,25 @@ package Entities;
  *
  * @author BtsSio9
  */
-public class CTrie_par {
+public final class CTriePar {
 
+    protected CLivre livre;
+    protected CCategorie categorie;
     protected int idLivre;
     protected int idCategorie;
 
-    public CTrie_par(int idLivre, int idCategorie) {
+    //constructeur
+    public CTriePar(int idLivre, int idCategorie) {
         setIdLivre(idLivre);
         setIdCategorie(idCategorie);
     }
 
+    public CTriePar(CLivre livre, CCategorie categorie) {
+        setLivre(livre);
+        setCategorie(categorie);
+    }
+
+    // Getter et Setter
     public int getIdLivre() {
         return idLivre;
     }
@@ -35,4 +44,20 @@ public class CTrie_par {
         this.idCategorie = idCategorie;
     }
 
+    public CLivre getLivre() {
+        return livre;
+    }
+
+    public void setLivre(CLivre livre) {
+        this.livre = livre;
+    }
+
+    public CCategorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(CCategorie categorie) {
+        this.categorie = categorie;
+    }
+    
 }

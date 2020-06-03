@@ -8,12 +8,7 @@ package BDD;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-/**
- *
- * @author BTS sio
- */
 public class CTest {
-
     protected int id;
     protected String nom;
     protected int age;
@@ -81,5 +76,4 @@ public class CTest {
     public void setDateNaissance(GregorianCalendar dateNaissance) {
         this.dateNaissance = dateNaissance;
     }
-
 }
